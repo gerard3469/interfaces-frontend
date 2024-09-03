@@ -1,0 +1,22 @@
+<div class="admin-container">
+  <div class="admin-box">
+    <div class="admin-header">
+      <h1>Admin Dashboard</h1>
+    </div>
+
+    <dx-data-grid [dataSource]="data" [columns]="columns" [showBorders]="true" [paging]="{ pageSize: 10 }"
+      [pager]="{ showPageSizeSelector: true, allowedPageSizes: [5, 10, 20] }" [filterRow]="{ visible: true }"
+      [headerFilter]="{ visible: true }" [searchPanel]="{ visible: true }">
+
+      <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+      <dxo-editing
+      mode="row"
+      [allowUpdating]="true"
+      [allowDeleting]="false"
+      [allowAdding]="true"
+    >
+    </dxo-editing>
+      
+    </dx-data-grid>
+  </div>
+</div>
