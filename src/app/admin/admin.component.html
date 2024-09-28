@@ -1,22 +1,60 @@
+<app-drawer>
 <div class="admin-container">
   <div class="admin-box">
     <div class="admin-header">
       <h1>Admin Dashboard</h1>
+      <dx-button 
+      text="Cerrar sesión" 
+      icon="clear" 
+      stylingMode="contained" 
+      type="danger"
+      class="logout-button"
+      (onClick)="logout()">
+    </dx-button>
     </div>
 
-    <dx-data-grid [dataSource]="data" [columns]="columns" [showBorders]="true" [paging]="{ pageSize: 10 }"
-      [pager]="{ showPageSizeSelector: true, allowedPageSizes: [5, 10, 20] }" [filterRow]="{ visible: true }"
-      [headerFilter]="{ visible: true }" [searchPanel]="{ visible: true }">
-
-      <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
-      <dxo-editing
-      mode="row"
-      [allowUpdating]="true"
-      [allowDeleting]="false"
-      [allowAdding]="true"
-    >
-    </dxo-editing>
+    <dx-tab-panel>
+      <dxi-item title="Historico">
+        <dx-data-grid [dataSource]="data" [columns]="columns" [showBorders]="true" [paging]="{ pageSize: 10 }"
+        [pager]="{ showPageSizeSelector: true, allowedPageSizes: [5, 10, 20] }" [filterRow]="{ visible: true }"
+        [headerFilter]="{ visible: true }" [searchPanel]="{ visible: true }">
+  
+        <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+        <dxo-editing
+        mode="row"
+        [allowUpdating]="true"
+        [allowDeleting]="false"
+        [allowAdding]="true"
+      >
+      </dxo-editing>
       
-    </dx-data-grid>
+        
+      </dx-data-grid>
+      </dxi-item>
+      
+      <dxi-item title="Productos">
+        <dx-data-grid [dataSource]="dataProducts" [columns]="columnsProducts" [showBorders]="true" [paging]="{ pageSize: 10 }"
+        [pager]="{ showPageSizeSelector: true, allowedPageSizes: [5, 10, 20] }" [filterRow]="{ visible: true }"
+        [headerFilter]="{ visible: true }" [searchPanel]="{ visible: true }">
+  
+        <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+        <dxo-editing
+        mode="row"
+        [allowUpdating]="true"
+        [allowDeleting]="false"
+        [allowAdding]="true"
+      >
+      </dxo-editing>
+      
+        
+      </dx-data-grid>
+      </dxi-item>
+
+      <!-- Puedes agregar más pestañas aquí -->
+    </dx-tab-panel>
+
+   
   </div>
 </div>
+
+</app-drawer>

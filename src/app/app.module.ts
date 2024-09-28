@@ -3,15 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DxButtonModule, DxDataGridModule, DxTemplateModule, DxTextBoxModule } from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule, DxDrawerModule, DxFormModule, DxListModule, DxTabPanelModule, DxTemplateModule, DxTextBoxModule, DxToolbarModule, DxValidatorModule } from 'devextreme-angular';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth-interceptor.service';
+import { DrawerComponent } from './shared/drawer/drawer.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    DrawerComponent
   ],
   imports: [
     BrowserModule,
@@ -20,9 +24,19 @@ import { RouterModule } from '@angular/router';
     DxDataGridModule,
     DxButtonModule,
     DxTextBoxModule,
-    DxTemplateModule
+    DxTemplateModule,
+    DxValidatorModule,
+    DxFormModule,
+    DxDrawerModule,
+    DxListModule,
+    DxToolbarModule,
+    DxTabPanelModule
   ],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

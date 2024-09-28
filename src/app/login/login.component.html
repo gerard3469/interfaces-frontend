@@ -1,26 +1,32 @@
 <div class="login-container">
   <div class="login-box">
     <h2>Inicio de sesión </h2>
-    <form (ngSubmit)="onSubmit()">
-      <dx-text-box
-        [(value)]="email"
-        placeholder="Usuario"
-        stylingMode="outlined">
+    <!--form (ngSubmit)="onSubmit($event)">
+      <dx-text-box [(value)]="email" placeholder="Correo" stylingMode="outlined">
+        <dx-validator>
+          <dxi-validation-rule type="required" message="Correo es requerido"></dxi-validation-rule>
+          <dxi-validation-rule type="email" message="Correo no válido"></dxi-validation-rule>
+        </dx-validator>
+      </dx-text-box>
+      <dx-text-box [(value)]="password" mode="password" placeholder="Contraseña" stylingMode="outlined">
+        <dx-validator>
+          <dxi-validation-rule type="required" message="Constraseña es requerida"></dxi-validation-rule>
+        </dx-validator>
       </dx-text-box>
 
-      <dx-text-box
-        [(value)]="password"
-        mode="password"
-        placeholder="Contraseña"
-        stylingMode="outlined">
-      </dx-text-box>
-
-      <dx-button
-        text="Ingresar"
-        type="success"
-        (onClick)="onSubmit()"
+      <dx-button text="Ingresar" type="success" [useSubmitBehavior]="true"
         stylingMode="contained">
       </dx-button>
+      <p *ngIf="error">{{ error }}</p>
+    </form-->
+    <form (ngSubmit)="onSubmit($event)">
+      <dx-text-box [(value)]="email" placeholder="Usuario" stylingMode="outlined"></dx-text-box>
+      <dx-text-box [(value)]="password" mode="password" placeholder="Contraseña" stylingMode="outlined"></dx-text-box>
+    
+      <dx-button text="Ingresar" type="success" (onClick)="onSubmit($event)" stylingMode="contained"></dx-button>
+    
+      <p class="error" *ngIf="error">{{ error }}</p>
     </form>
   </div>
+
 </div>
